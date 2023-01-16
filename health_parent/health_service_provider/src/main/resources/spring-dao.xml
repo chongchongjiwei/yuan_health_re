@@ -41,4 +41,7 @@
         <!--指定接口所在的包-->
         <property name="basePackage" value="com.yuan.dao" />
     </bean>
+
+
+
 </beans>

@@ -1,3 +1,4 @@
+import com.github.pagehelper.Page;
 import com.yuan.dao.CheckItemDao;
 
 import com.yuan.pojo.CheckItem;
@@ -11,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring-dao.xml")
+@ContextConfiguration(locations = {"classpath:spring-dao.xml","classpath:com/yuan/dao/*Dao.xml"})
 public class Test1 {
 @Autowired
 private CheckItemDao checkItemDao ;
@@ -20,9 +21,11 @@ private CheckItemDao checkItemDao ;
     @Test
     public void test1()
     {
-        CheckItem checkItem =new CheckItem();
-        checkItem.setName("hahha");
-        checkItem.setCode("2312312");
-        checkItemDao.add(checkItem);
+//        CheckItem checkItem =new CheckItem();
+//        checkItem.setName("hahha");
+//        checkItem.setCode("2312312");
+//        checkItemDao.add(checkItem);
+//        Page<CheckItem> checkItems = checkItemDao.selectByCondition("1000");
+//        System.out.println(checkItems.getResult());
     }
 }

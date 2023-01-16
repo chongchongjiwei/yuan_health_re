@@ -12,6 +12,20 @@
     <artifactId>health_common</artifactId>
 
     <dependencies>
+
+
+
+
+        <!--腾讯云对象存储-->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+
+        </dependency>
+
+
+
+
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
