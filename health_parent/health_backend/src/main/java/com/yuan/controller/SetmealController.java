@@ -46,7 +46,7 @@ public class SetmealController {
             //图片上传成功
             Result result = new Result(true, MessageConstant.PIC_UPLOAD_SUCCESS,re1);
             //将上传图片名称存入Redis，基于Redis的Set集合存储
-            jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_RESOURCES,filename);
+            jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_RESOURCES,re1);
 
             return  new Result(true, MessageConstant.PIC_UPLOAD_SUCCESS,re1);
         }catch (Exception e)
@@ -73,7 +73,6 @@ public class SetmealController {
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean) {
         PageResult pageResult = setmealService.pageQuery(queryPageBean);
         return pageResult;
-
     }
 
 }
