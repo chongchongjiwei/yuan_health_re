@@ -27,5 +27,7 @@ private CheckItemDao checkItemDao ;
 //        checkItemDao.add(checkItem);
 //        Page<CheckItem> checkItems = checkItemDao.selectByCondition("1000");
 //        System.out.println(checkItems.getResult());
+
+        System.out.println("这是test_setmeal分支写的");
     }
 }
