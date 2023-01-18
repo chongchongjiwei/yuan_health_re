@@ -21,6 +21,7 @@
         <!-- 注入目标方法 -->
         <property name="targetMethod" value="clearImg"/>
     </bean>
+
     <!-- 注册一个触发器，指定任务触发的时间 -->
     <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <!-- 注入JobDetail -->

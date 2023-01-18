@@ -12,4 +12,10 @@ public interface SetmealDao {
     public void setSetmealAndCheckGroup(Map<String, Integer> map);
 
     public Page<Setmeal> selectByCondition(String queryString);
+
+    //删除套餐和检查组关系
+    public void delete_Association_Checkgroup(Integer id);
+
+    //删除检查组本身
+    public void delete_self(Integer id);
 }

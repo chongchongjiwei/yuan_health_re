@@ -16,6 +16,8 @@ import redis.clients.jedis.JedisPool;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.yuan.constant.RedisConstant.SETMEAL_PIC_RESOURCES;
+
 @Service(interfaceClass = SetmealService.class)
 @Transactional
 public class SetmealServiceImpl implements SetmealService {
@@ -44,6 +46,8 @@ public class SetmealServiceImpl implements SetmealService {
 
     }
 
+
+
     //绑定套餐和检查组的多对多关系
     private void setSetmealAndCheckGroup(Integer id, Integer[] checkgroupIds) {
         for (Integer checkgroupId : checkgroupIds) {
@@ -56,6 +60,18 @@ public class SetmealServiceImpl implements SetmealService {
 
     //将图片名称保存到Redis
     private void savePic2Redis(String pic){
+
         jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES,pic);
+    }
+
+    @Override
+    public void deleteSetmeal(Integer id,String img) {
+        //删除套餐和检查组的关系
+        setmealDao.delete_Association_Checkgroup(id);
+        //删除本身
+        setmealDao.delete_self(id);
+        //删除redis数据库
+        jedisPool.getResource().srem(RedisConstant.SETMEAL_PIC_DB_RESOURCES,img);
+
     }
 }

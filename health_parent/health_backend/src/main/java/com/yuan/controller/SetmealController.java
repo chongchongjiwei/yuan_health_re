@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import redis.clients.jedis.JedisPool;
 
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -73,6 +74,29 @@ public class SetmealController {
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean) {
         PageResult pageResult = setmealService.pageQuery(queryPageBean);
         return pageResult;
+    }
+
+    //删除套餐
+    @RequestMapping("/delete")
+//    public Result deleteSetmeal(
+//            @RequestParam(value ="id",required = false ) Integer id,
+//            @RequestParam(value = "img") String imgdata)
+
+    public Result deleteSetmeal(@RequestBody Map<String,Object> imgdata)
+    {
+        try{
+            System.out.println(imgdata.get("img"));
+            String img = (String) imgdata.get("img");
+            int id =(Integer)  imgdata.get("id");
+//            String str = imgdata;
+//            setmealService.deleteSetmeal((Integer) id,img);
+        }catch (RuntimeException e)
+        {
+            return  new Result(false,e.getMessage());
+        }catch (Exception e){
+            return new Result(false, "删除套餐失败");
+        }
+        return new Result(true,"删除套餐成功");
     }
 
 }

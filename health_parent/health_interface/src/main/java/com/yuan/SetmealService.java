@@ -8,4 +8,6 @@ public interface SetmealService {
     public void add(Setmeal setmeal, Integer[] checkgroupIds);
     public PageResult pageQuery(QueryPageBean queryPageBean);
 
+    public void deleteSetmeal(Integer id,String img);
+
 }
