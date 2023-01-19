@@ -134,12 +134,42 @@
                 days: [],
                 leftobj: []//用于装载页面显示的月份已经进行预约设置的数据
             },
-            created: function () {//在vue初始化时调用
+            created: function () {//在vue初始化时调用.
+
                 this.initData(null);
+                this.goCurrentMonth(this.currentYear,this.currentMonth);
+
             },
             methods: {
 				//预约设置
                 handleOrderSet(day){
+                    this.$prompt('请输入可预约人数', '预约设置', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        inputPattern: /^[0-9]*[1-9][0-9]*$/,
+                        inputErrorMessage: '只能输入正整数'
+                    }).then(({ value }) => {
+                        //发送ajax请求根据日期修改可预约人数
+                        axios.post("/ordersetting/editNumberByDate.do",{
+                            orderDate:this.formatDate(day.getFullYear(),day.getMonth()+1,day.getDate()), //日期
+                            number:value   //可预约人数
+                        }).then((response)=>{
+                            if(response.data.flag){
+                                this.initData(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
+                                this.$message({
+                                    type: 'success',
+                                    message: response.data.message
+                                });
+                            }else{
+                                this.$message.error(response.data.message);
+                            }
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消'
+                        });
+                    });
                 },
 				//上传之前进行文件格式校验
                 beforeUpload(file){
@@ -223,13 +253,26 @@
                         this.days.push(dayobject);
                     }
                     
-                    /*this.leftobj = [
-                        { date: 1, number: 120, reservations: 1 },
-                        { date: 3, number: 120, reservations: 1 },
-                        { date: 4, number: 120, reservations: 120 },
-                        { date: 6, number: 120, reservations: 1 },
-                        { date: 8, number: 120, reservations: 1 }
-                    ];*/
+                   // this.leftobj = [
+                   //      { date: 1, number: 120, reservations: 1 },
+                   //      { date: 3, number: 120, reservations: 1 },
+                   //      { date: 4, number: 120, reservations: 120 },
+                   //      { date: 6, number: 120, reservations: 1 },
+                   //      { date: 8, number: 120, reservations: 1 }
+                   //  ];
+
+                    // 查询数据库得到结果
+                    //发送ajax请求，根据当前页面对应的月份查询预约设置信息
+                    axios.post(
+                        "/ordersetting/getOrderSettingByMonth.do?date="+this.currentYear+'-'+this.currentMonth
+                    ).then((response)=>{
+                        if(response.data.flag){
+                            //为模型数据赋值，通过双向绑定展示到日历中
+                            this.leftobj = response.data.data;
+                        }else{
+                            this.$message.error(response.data.message);
+                        }
+                    });
                 },
 				//切换到当前月份
                 goCurrentMonth: function (year, month) {
