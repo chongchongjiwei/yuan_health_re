@@ -15,6 +15,7 @@
         <module>health_service_provider</module>
         <module>health_backend</module>
         <module>health_jobs</module>
+        <module>health_mobile</module>
     </modules>
     <!--    打包方式-->
     <packaging>pom</packaging>
@@ -56,11 +57,10 @@
             </dependency>
 
             <!--腾讯云对象存储-->
-            <dependency>
-                <groupId>com.qcloud</groupId>
-                <artifactId>cos_api</artifactId>
-                <version>5.6.68</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.qcloud</groupId>-->
+<!--                <artifactId>cos_api</artifactId>-->
+<!--            </dependency>-->
             <!--            # 版本在maven生效需要时间，如获取不到对应的版本，可以调低版本号-->
 
             <!-- Spring -->
