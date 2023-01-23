@@ -10,14 +10,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-dao.xml","classpath:com/yuan/dao/*Dao.xml"})
+@ContextConfiguration(locations = {"classpath:spring-dao-test.xml","classpath:com/yuan/dao/*Dao.xml"})
 public class Test1 {
 @Autowired
 private CheckItemDao checkItemDao ;
 
 
+//查询远程数据库
     @Test
     public void test1()
     {
@@ -27,7 +29,11 @@ private CheckItemDao checkItemDao ;
 //        checkItemDao.add(checkItem);
 //        Page<CheckItem> checkItems = checkItemDao.selectByCondition("1000");
 //        System.out.println(checkItems.getResult());
+        List<CheckItem> test= checkItemDao.findAll();
 
+        for (CheckItem checkItem : test) {
+            System.out.println(checkItem.toString());
+        }
         System.out.println("这是test_setmeal分支写的");
     }
 }

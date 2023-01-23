@@ -5,6 +5,7 @@ import com.yuan.entity.PageResult;
 import com.yuan.entity.QueryPageBean;
 import com.yuan.pojo.Setmeal;
 
+import java.util.List;
 import java.util.Map;
 
 public interface SetmealDao {
@@ -18,4 +19,9 @@ public interface SetmealDao {
 
     //删除检查组本身
     public void delete_self(Integer id);
+
+    //查询所有套餐信息
+    public List<Setmeal> findAll();
+
+    public Setmeal findById(int id);
 }

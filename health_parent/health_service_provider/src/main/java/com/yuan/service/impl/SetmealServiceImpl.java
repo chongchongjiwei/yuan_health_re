@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.JedisPool;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.yuan.constant.RedisConstant.SETMEAL_PIC_RESOURCES;
@@ -73,5 +74,14 @@ public class SetmealServiceImpl implements SetmealService {
         //删除redis数据库
         jedisPool.getResource().srem(RedisConstant.SETMEAL_PIC_DB_RESOURCES,img);
 
+    }
+
+    @Override
+    public List<Setmeal> findAll() {
+        return setmealDao.findAll();
+
+    }
+    public Setmeal findById(int id) {
+        return setmealDao.findById(id);
     }
 }
