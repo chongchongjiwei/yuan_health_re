@@ -343,7 +343,7 @@
                         type: 'warning'
                     }).then(()=>{
                         // alert("用户点击了确定按钮");
-                        axios.get("/setmeal/delete.do",params).then(
+                        axios.post("/setmeal/delete.do",params).then(
                         // axios.get("/setmeal/delete.do?id="+row.id+"&img="+row.img).then(
                             (res)=>{
                                 if(res.data.flag)

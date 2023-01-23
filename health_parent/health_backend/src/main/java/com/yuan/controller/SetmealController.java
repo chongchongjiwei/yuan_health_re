@@ -89,7 +89,7 @@ public class SetmealController {
             String img = (String) imgdata.get("img");
             int id =(Integer)  imgdata.get("id");
 //            String str = imgdata;
-//            setmealService.deleteSetmeal((Integer) id,img);
+            setmealService.deleteSetmeal((Integer) id,img);
         }catch (RuntimeException e)
         {
             return  new Result(false,e.getMessage());

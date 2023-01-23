@@ -16,9 +16,7 @@
                             http://www.springframework.org/schema/util
                             http://www.springframework.org/schema/util/spring-util.xsd">
 
-<!--    <context:property-placeholder location="classpath*:jdbc.properties" file-encoding="UTF-8"></context:property-placeholder>|-->
-    <context:property-placeholder location="classpath:/*.properties" />
-
+    <context:property-placeholder location="classpath*:jdbc.properties" file-encoding="UTF-8"></context:property-placeholder>
     <!--数据源-->
     <bean id="dataSource"
           class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" >
@@ -29,7 +27,7 @@
         <property name="username" value="root" />
         <property name="password" value="123456" />
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/health?serverTimezone=UTC" />
+        <property name="url" value="jdbc:mysql://82.156.204.58:3306/health?serverTimezone=UTC" />
 
     </bean>
     <!--spring和mybatis整合的工厂bean-->
