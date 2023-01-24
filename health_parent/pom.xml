@@ -14,6 +14,7 @@
         <module>health_interface</module>
         <module>health_service_provider</module>
         <module>health_backend</module>
+        <module>health_jobs</module>
     </modules>
     <!--    打包方式-->
     <packaging>pom</packaging>
@@ -42,6 +43,17 @@
     <dependencyManagement>
         <dependencies>
 
+<!--            读取excel-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>3.14</version>
+            </dependency>
 
             <!--腾讯云对象存储-->
             <dependency>

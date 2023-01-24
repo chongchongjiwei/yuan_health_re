@@ -26,6 +26,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         checkGroupDao.add(checkGroup);
         setCheckGroupAndCheckItem(checkGroup.getId(),checkitemIds);
 
+
     }
 
     //设置检查项和检查组的关联
@@ -78,5 +79,15 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 //        查找组
     public List<CheckGroup> findAll() {
         return checkGroupDao.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        //删除和检查项的联系
+        checkGroupDao.deleteAssociation(id);
+        //删除和检查组的联系
+        checkGroupDao.deleteAssociation_Setmeal(id);
+        //删除检查组本身
+        checkGroupDao.deleteSelf(id);
     }
 }

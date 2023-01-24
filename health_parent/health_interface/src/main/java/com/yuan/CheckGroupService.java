@@ -21,5 +21,8 @@ public interface CheckGroupService {
     //查找所有组
     List<CheckGroup> findAll();
 
+    //删除检查组
+    public void delete(int id);
+
 
 }
