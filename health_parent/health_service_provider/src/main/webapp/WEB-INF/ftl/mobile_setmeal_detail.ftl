@@ -26,7 +26,7 @@
     <div class="contentBox">
         <div class="card">
             <div class="project-img">
-                <img src="http://puco9aur6.bkt.clouddn.com/${setmeal.img}"
+                <img src="https://wangzhan-1301788048.cos.ap-nanjing.myqcloud.com/${setmeal.img}"
                      width="100%" height="100%" />
             </div>
             <div class="project-text">

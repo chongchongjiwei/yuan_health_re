@@ -12,7 +12,12 @@
     <artifactId>health_common</artifactId>
 
     <dependencies>
-
+<!--        静态页面制作-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.poi</groupId>
