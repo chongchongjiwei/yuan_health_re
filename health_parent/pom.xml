@@ -16,6 +16,8 @@
         <module>health_backend</module>
         <module>health_jobs</module>
         <module>health_mobile</module>
+        <module>Security</module>
+
     </modules>
     <!--    打包方式-->
     <packaging>pom</packaging>

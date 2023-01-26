@@ -8,6 +8,7 @@ import com.yuan.entity.PageResult;
 import com.yuan.entity.QueryPageBean;
 import com.yuan.entity.Result;
 import com.yuan.pojo.CheckItem;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,8 @@ public class CheckItemController {
 
     }
     @RequestMapping("/pageQuery")
+    //分页查询
+//    @PreAuthorize("hasAuthority('CHECKITEM_QUERY')")//权限校验
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean)
     {
         try {
@@ -48,8 +51,10 @@ public class CheckItemController {
         }
         return null;
     }
+
     //删除
     @RequestMapping("/delete")
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")
     public Result delete(Integer id){
         try {
             checkItemService.delete(id);
