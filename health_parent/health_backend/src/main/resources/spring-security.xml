@@ -55,6 +55,8 @@
                              authentication-failure-url="/login.html"
         />
 
+        <security:logout logout-url="/logout.do"
+                         logout-success-url="/login.html" invalidate-session="true"/>
         <!--
             csrf：对应CsrfFilter过滤器
             disabled：是否启用CsrfFilter过滤器，如果使用自定义登录页面需要关闭此项，
